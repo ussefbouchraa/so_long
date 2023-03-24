@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:05:16 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/22 01:37:06 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/23 23:59:56 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_vars
     char  **map;
     char  **map2;
     char *line;
-}c_vars;
+}   t_vars;
+
 
 // part one
 size_t	ft_strlen(const char *str);
@@ -48,9 +49,12 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*get_next_line(int fd);
 void    ft_puterror(char *s);
+char	*ft_strrchr(const char *s, int c);
 
 //part two
-void valid_path(c_vars *var);
+void valid_path(t_vars *var);
 void free_map(char **map);
 void print_map(char **map);
+int ft_strcmp(char *s1, char *s2);
+
 #endif 

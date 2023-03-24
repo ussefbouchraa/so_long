@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 13:29:07 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/23 23:43:55 by ybouchra         ###   ########.fr       */
+/*   Created: 2023/03/23 23:39:43 by ybouchra          #+#    #+#             */
+/*   Updated: 2023/03/23 23:43:46 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_strchr(const char *s, int c)
+int ft_strcmp(char *s1, char *s2)
 {
-	int		i;
-	char	*str;
-
-	str = (char *)s;
-	i = 0;
-	if (!s)
-		return (0);
-	while (str[i] && str[i] != (char)c)
-		i++;
-	if (str[i] == (char)c)
+	if (!s1 || !s2)
 		return (1);
-	return (0);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-	char	*str;
-
-	str = (char *)s;
-	i = ft_strlen(str);
-	while (i >= 0)
+	while ((*s1 && *s2) && (*s1 == *s2))
 	{
-		if (str[i] == (char)c)
-			return (str + i);
-		i--;
+		s1++;
+		s2++;
 	}
-	return (0);
+	return (*s1 - *s2);
 }
+

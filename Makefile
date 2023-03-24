@@ -6,7 +6,7 @@
 #    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 00:57:35 by ybouchra          #+#    #+#              #
-#    Updated: 2023/03/23 23:22:54 by ybouchra         ###   ########.fr        #
+#    Updated: 2023/03/24 00:00:38 by ybouchra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ FILES = utils/ft_strchr.c \
 	utils/ft_strjoin.c \
 	utils/ft_strlen.c \
 	utils/ft_puterror.c \
-	utils/valid_path.c \
 	utils/get_next_line.c \
+	utils/ft_strcmp.c \
+	valid_path.c \
 	so_long.c
 
 OBJS = $(FILES:.c=.o)
