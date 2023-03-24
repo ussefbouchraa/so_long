@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:05:16 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/24 04:30:43 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/24 05:30:34 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,17 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 25
-# endif 
+# endif
 
 //part 1
-
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 	int		fd;
-	int		x;
-	int		y;
-	int		j;
-	int		p;
 	int		c;
 	int		e;
+	int		p;
 	int		width;
 	int		hight;
 	char	**map;
@@ -44,22 +40,21 @@ typedef struct s_vars
 	char	*line;
 }	t_vars;
 
-
 // part one
 size_t	ft_strlen(const char *str);
 int		ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*get_next_line(int fd);
-void    ft_puterror(char *s);
+void	ft_puterror(char *s);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(char *s1, char *s2);
 
 //part two
-void valid_path(t_vars *var);
-void free_map(char **map);
-void print_map(char **map);
-int ft_strcmp(char *s1, char *s2);
-void    clear_vars(t_vars *var, int err);
-void map_border(t_vars *var);
+// void	valid_path(t_vars *var);
+void	free_map(char **map);
+void	print_map(char **map);
+void	clear_vars(t_vars *var, int err);
+void	map_border(t_vars *var);
 
-#endif 
+#endif

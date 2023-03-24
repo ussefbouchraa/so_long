@@ -6,7 +6,7 @@
 #    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 00:57:35 by ybouchra          #+#    #+#              #
-#    Updated: 2023/03/24 04:24:12 by ybouchra         ###   ########.fr        #
+#    Updated: 2023/03/24 05:31:43 by ybouchra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ RM = rm -f
 
 
 UTILS =  utils/ft_puterror.c utils/ft_strchr.c utils/ft_strcmp.c utils/ft_strdup.c \
-	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c 
+	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c  utils/free_map.c 
 
-SRCS = srcs/so_long.c srcs/valid_path.c srcs/map_border.c srcs/clear_var.c
+SRCS = srcs/so_long.c srcs/map_border.c srcs/clear_var.c
 
 UOBJ = $(UTILS:.c=.o)
 
