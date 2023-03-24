@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:05:16 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/23 23:59:56 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/24 04:30:43 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,24 @@
 # endif 
 
 //part 1
+
 typedef struct s_vars
 {
-    int fd;
-    int x;
-    int y;
-    int j;
-    int p;
-    int c;
-    int e;
-    int width;
-    int hight;
-    char  **map;
-    char  **map2;
-    char *line;
-}   t_vars;
+	void	*mlx;
+	void	*win;
+	int		fd;
+	int		x;
+	int		y;
+	int		j;
+	int		p;
+	int		c;
+	int		e;
+	int		width;
+	int		hight;
+	char	**map;
+	char	**map2;
+	char	*line;
+}	t_vars;
 
 
 // part one
@@ -56,5 +59,7 @@ void valid_path(t_vars *var);
 void free_map(char **map);
 void print_map(char **map);
 int ft_strcmp(char *s1, char *s2);
+void    clear_vars(t_vars *var, int err);
+void map_border(t_vars *var);
 
 #endif 

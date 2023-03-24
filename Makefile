@@ -6,7 +6,7 @@
 #    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 00:57:35 by ybouchra          #+#    #+#              #
-#    Updated: 2023/03/24 00:00:38 by ybouchra         ###   ########.fr        #
+#    Updated: 2023/03/24 04:24:12 by ybouchra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,18 @@ AR = ar rc
 RM = rm -f
 
 
-FILES = utils/ft_strchr.c \
-	utils/ft_strdup.c \
-	utils/ft_strjoin.c \
-	utils/ft_strlen.c \
-	utils/ft_puterror.c \
-	utils/get_next_line.c \
-	utils/ft_strcmp.c \
-	valid_path.c \
-	so_long.c
+UTILS =  utils/ft_puterror.c utils/ft_strchr.c utils/ft_strcmp.c utils/ft_strdup.c \
+	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c 
 
-OBJS = $(FILES:.c=.o)
+SRCS = srcs/so_long.c srcs/valid_path.c srcs/map_border.c srcs/clear_var.c
+
+UOBJ = $(UTILS:.c=.o)
+
+SOBJ = $(SRCS:.c=.o)
 
 all : $(NAME) 
 
-$(NAME) : $(OBJS)
+$(NAME) : $(UOBJ) $(SOBJ)
 	@$(CC) $^ -o $@
 	@echo "$@ created"
 
@@ -39,7 +36,7 @@ $(NAME) : $(OBJS)
 	@$(CC) -c $< -o $@ 
 
 clean :
-	@$(RM) $(OBJS) $(S_OBJ)
+	@$(RM) $(SOBJ) $(UOBJ)
 	@echo "object files removed"
 
 fclean : clean
