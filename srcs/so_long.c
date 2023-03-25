@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:06:10 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/24 05:30:24 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/25 03:23:35 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,24 @@ void	map_chars(t_vars *var)
 					var->e++;
 			}
 			else
-				clear_vars(var, 1);
+				clear_vars(var);
 		}
 	}
 	if (var->c == 0 || var->e != 1 || var->p != 1)
-		clear_vars(var, 1);
+		clear_vars(var);
 }
-
+void init_vars(t_vars *var)
+{
+	var->fd = 0;
+	var->p = 0;
+	var->c = 0;
+	var->e = 0;
+	var->width = 0;
+	var->hight = 0;
+	var->map = NULL;
+	var->map2 = NULL;
+	var->line = NULL;
+}
 void	check_map(char *av, t_vars *var)
 {
 	int	j;
@@ -70,7 +81,11 @@ void	check_map(char *av, t_vars *var)
 	close(var->fd);
 	map_border(var);
 	map_chars(var);
-	// valid_path(var);
+	var->map2 = dup_map(var->map, var->hight);
+	if (!var->map2)
+		clear_vars(var);
+	valid_path(var);
+	
 	// play_game(var);
 }
 
@@ -85,9 +100,8 @@ void lek() { system("leaks so_long");}
 int main(int ac, char **av)
 {
 	t_vars	var;
-
-	// init_vars(&var);
-	memset(&var, 0, sizeof(t_vars));
+	init_vars(&var);
+	
 	if(ac == 2)
 	{
 		check_extention(av[1]);
@@ -107,5 +121,5 @@ int main(int ac, char **av)
 		check_map(av[1], &var);
 	}
 	else
-		return (1);
+		ft_puterror("Error \n");
 }

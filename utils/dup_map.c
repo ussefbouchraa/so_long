@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   dup_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 03:11:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/25 02:37:07 by ybouchra         ###   ########.fr       */
+/*   Created: 2023/03/25 02:37:20 by ybouchra          #+#    #+#             */
+/*   Updated: 2023/03/25 03:01:47 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	*ft_strdup(const char *s1)
+char **dup_map(char **map, int hight)
 {
-	int		i;
-	char	*new;
+    char **map2;
+    int j;
 
-	i = 0;
-	new = (char *)malloc((sizeof(char) * ft_strlen(s1)) + 1);
-	if (!new)
-		return (NULL);
-	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
+    j = -1;
+    map2 = malloc(sizeof(char *) * hight + 1);
+    if (!map2)
+        return (NULL);
+
+    while (map[++j])
+        map2[j] = ft_strdup(map[j]);
+
+    map2[j] = NULL;
+    return (map2);
 }
