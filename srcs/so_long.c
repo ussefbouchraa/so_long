@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:06:10 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/25 03:23:35 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/29 07:05:53 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@ void print_map(char **map)
 	while (*map)
 		printf("%s\n", *map++);
 }
-
-int	is_element_of_map(char c)
-{
-	if (c == 'E' || c == 'P' || c == '0')
-		return (1);
-	else if (c == 'C' || c == '1')
-		return (1);
-	return (0);
-}
-
 void	map_chars(t_vars *var)
 {
 	int	x;
@@ -37,8 +27,6 @@ void	map_chars(t_vars *var)
 	{
 		y = -1;
 		while(var->map[x][++y])
-		{
-			if (is_element_of_map(var->map[x][y]))
 			{
 				if(var->map[x][y] == 'P')
 					var->p++;
@@ -46,17 +34,20 @@ void	map_chars(t_vars *var)
 					var->c++;
 				else if(var->map[x][y] == 'E')
 					var->e++;
+				else if(var->map[x][y] != '1' && var->map[x][y] != '0')
+					clear_vars(var, 1);
 			}
-			else
-				clear_vars(var);
 		}
-	}
+
 	if (var->c == 0 || var->e != 1 || var->p != 1)
-		clear_vars(var);
+		clear_vars(var, 1);
 }
-void init_vars(t_vars *var)
+void	init_vars(t_vars *var)
 {
+	var->score = 0;
 	var->fd = 0;
+	var->x = 0;
+	var->y = 0;
 	var->p = 0;
 	var->c = 0;
 	var->e = 0;
@@ -65,6 +56,8 @@ void init_vars(t_vars *var)
 	var->map = NULL;
 	var->map2 = NULL;
 	var->line = NULL;
+	var->mlx = NULL;
+	var->win = NULL;
 }
 void	check_map(char *av, t_vars *var)
 {
@@ -78,15 +71,12 @@ void	check_map(char *av, t_vars *var)
 	while (j < var->hight)
 		var->map[j++] = get_next_line(var->fd);
 	var->map[j] = NULL;
+	
 	close(var->fd);
 	map_border(var);
 	map_chars(var);
-	var->map2 = dup_map(var->map, var->hight);
-	if (!var->map2)
-		clear_vars(var);
 	valid_path(var);
-	
-	// play_game(var);
+	play_game(var);
 }
 
 void    check_extention(char *av)
@@ -100,8 +90,10 @@ void lek() { system("leaks so_long");}
 int main(int ac, char **av)
 {
 	t_vars	var;
+
+	atexit(lek);
+
 	init_vars(&var);
-	
 	if(ac == 2)
 	{
 		check_extention(av[1]);

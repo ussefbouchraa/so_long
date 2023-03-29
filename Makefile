@@ -6,7 +6,7 @@
 #    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 00:57:35 by ybouchra          #+#    #+#              #
-#    Updated: 2023/03/25 03:18:07 by ybouchra         ###   ########.fr        #
+#    Updated: 2023/03/26 04:08:39 by ybouchra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ CC = cc -Wall -Wextra -Werror
 AR = ar rc
 RM = rm -f
 
+MLX_FLG = -lmlx -framework OpenGL -framework AppKit
 
 UTILS =  utils/ft_puterror.c utils/ft_strchr.c utils/ft_strcmp.c utils/ft_strdup.c \
-	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c  utils/free_map.c utils/dup_map.c 
+	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c 
 
 
-SRCS = srcs/so_long.c srcs/map_border.c srcs/clear_var.c srcs/valid_path.c
+SRCS = srcs/so_long.c srcs/map_border.c srcs/clear_var.c srcs/valid_path.c \
+	srcs/play_game.c
 
 UOBJ = $(UTILS:.c=.o)
 
@@ -30,7 +32,7 @@ SOBJ = $(SRCS:.c=.o)
 all : $(NAME) 
 
 $(NAME) : $(UOBJ) $(SOBJ)
-	@$(CC) $^ -o $@
+	@$(CC) $(MLX_FLG) $^ -o $@
 	@echo "$@ created"
 
 %.o : %.c includes/so_long.h
