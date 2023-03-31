@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:05:16 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/31 02:03:57 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:32:33 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_img
 	void	*coin;
 	void	*door;
 	void	*road;
-} t_img;
+}	t_img;
 
 typedef struct s_vars
 {
@@ -54,7 +54,18 @@ typedef struct s_vars
 	char	*line;
 }	t_vars;
 
-// part one
+// so_long Functions :
+void	check_moves(t_vars *var, int xx, int yy);
+void	init_images(t_vars *var);
+void	map_border(t_vars *var);
+void	valid_path(t_vars *var);
+void	move_player(t_vars *var, int key);
+void	clear_vars(t_vars *var, int msg);
+void	free_map(char **map);
+void	play_game(t_vars *var);
+void	display_map(t_vars *var);
+
+// utils functions :
 size_t	ft_strlen(const char *str);
 int		ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
@@ -63,17 +74,7 @@ char	*get_next_line(int fd);
 void	ft_puterror(char *s);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
-void    ft_putstr(char *s);
-void    put_moves(int moves);
+void	ft_putstr(char *s);
+void	put_moves(int moves);
 
-//part two
-void	map_border(t_vars *var);
-void    valid_path(t_vars *var);
-void 	move_player(t_vars *var, int key);
-void	clear_vars(t_vars *var, int msg);
-void	free_map(char **map);
-
-//part three
-void    play_game(t_vars *var);
-void    display_map(t_vars *var);
 #endif

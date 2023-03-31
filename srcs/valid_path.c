@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 02:28:05 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/31 02:03:18 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:12:53 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ void	check_element(t_vars *var)
 	x = 0;
 	while (var->map2[x])
 	{
-		if (ft_strchr(var->map2[x], 'E') 
-			|| ft_strchr(var->map2[x], 'C'))
+		if (ft_strchr(var->map2[x], 'E') || ft_strchr(var->map2[x], 'C'))
 			clear_vars(var, 1);
 		x++;
 	}
 	free_map(var->map2);
 	var->map2 = NULL;
 }
-void    dup_map(t_vars *var)
+
+void	dup_map(t_vars *var)
 {
-	int x;
+	int	x;
 
 	x = -1;
 	var->map2 = malloc(sizeof(char *) * var->hight + 1);
@@ -67,21 +67,22 @@ void    dup_map(t_vars *var)
 		var->map2[x] = ft_strdup(var->map[x]);
 	var->map2[x] = NULL;
 }
-void    valid_path(t_vars *var)
+
+void	valid_path(t_vars *var)
 {
 	int	x;
 	int	y;
-	
+
 	x = 0;
 	dup_map(var);
-	while(var->map2[x])
+	while (var->map2[x])
 	{
 		y = 0;
-		while (var->map2[x][y] )
+		while (var->map2[x][y])
 		{
-			if(var->map2[x][y] == 'P')
+			if (var->map2[x][y] == 'P')
 			{
-				if (fill_map(var->map2, x, y) )
+				if (fill_map(var->map2, x, y))
 				{
 					x = 0;
 					y = 0;
@@ -93,4 +94,3 @@ void    valid_path(t_vars *var)
 	}
 	check_element(var);
 }
-

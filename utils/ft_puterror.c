@@ -6,28 +6,28 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 19:22:57 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/31 01:25:16 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:06:11 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void    ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
-    while (*s)
-        write(1, s++, 1);
+	while (*s)
+		write(1, s++, 1);
 }
 
-void ft_puterror(char *s)
+void	ft_puterror(char *s)
 {
-    while (*s)
-        write(2, s++, 1);
-    exit(1);
+	while (*s)
+		write(2, s++, 1);
+	exit(1);
 }
 
-void    ft_putchar(char c)
+void	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 void	ft_putnbr(int n)
@@ -51,9 +51,9 @@ void	ft_putnbr(int n)
 	}
 }
 
-void    put_moves(int moves)
+void	put_moves(int moves)
 {
-    ft_putstr("Moves : ");
-    ft_putnbr(moves);
-    ft_putstr("\n");
+	ft_putstr("Moves : ");
+	ft_putnbr(moves);
+	ft_putstr("\n");
 }

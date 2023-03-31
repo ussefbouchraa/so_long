@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 00:23:19 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/31 01:36:08 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:10:25 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,18 @@ void	free_map(char **map)
 void	destroy_images(t_vars *var)
 {
 	if (var->img.hero)
-		mlx_destroy_image(var->mlx, var->img.hero);	
+		mlx_destroy_image(var->mlx, var->img.hero);
 	if (var->img.coin)
-		mlx_destroy_image(var->mlx, var->img.coin);	
+		mlx_destroy_image(var->mlx, var->img.coin);
 	if (var->img.door)
-		mlx_destroy_image(var->mlx, var->img.door);	
+		mlx_destroy_image(var->mlx, var->img.door);
 	if (var->img.road)
-		mlx_destroy_image(var->mlx, var->img.road);	
+		mlx_destroy_image(var->mlx, var->img.road);
 	if (var->img.wall)
 		mlx_destroy_image(var->mlx, var->img.wall);
 }
-void clear_vars(t_vars *var , int msg)
+
+void	clear_vars(t_vars *var, int msg)
 {
 	if (var->line)
 		free(var->line);
@@ -56,7 +57,7 @@ void clear_vars(t_vars *var , int msg)
 			mlx_destroy_window(var->mlx, var->win);
 		}
 	}
-	if(msg == 1)	
+	if (msg == 1)
 		ft_puterror("Error : invalid map\n");
 	exit(0);
 }

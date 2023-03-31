@@ -1,26 +1,13 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/05 00:57:35 by ybouchra          #+#    #+#              #
-#    Updated: 2023/03/30 00:36:33 by ybouchra         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long
 
 CC = cc -Wall -Wextra -Werror
-AR = ar rc
+
 RM = rm -f
 
 MLX_FLG = -lmlx -framework OpenGL -framework AppKit
 
 UTILS =  utils/ft_puterror.c utils/ft_strchr.c utils/ft_strcmp.c utils/ft_strdup.c \
-	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c 
-
+	utils/ft_strjoin.c utils/ft_strlen.c utils/get_next_line.c srcs/so_long_utils.c
 
 SRCS = srcs/so_long.c srcs/map_border.c srcs/clear_var.c srcs/valid_path.c \
 	srcs/play_game.c
@@ -29,20 +16,22 @@ UOBJ = $(UTILS:.c=.o)
 
 SOBJ = $(SRCS:.c=.o)
 
-
-all : $(NAME) 
+all : $(NAME)
 
 $(NAME) : $(UOBJ) $(SOBJ)
-	$(CC) $(MLX_FLG) $^ -o $@
-	
-%.o : %.c includes/so_long.h
-	$(CC) -c $< -o $@ 
+	@$(CC) $(MLX_FLG) $^ -o $@
+	@echo "$@ created"
 
+%.o : %.c includes/so_long.h
+	@$(CC) -c $< -o $@
+	@echo "compiling $< ...Done!"
 
 clean :
-	$(RM) $(SOBJ) $(UOBJ)
+	@$(RM) $(SOBJ) $(UOBJ)
+	@echo "removed object files"
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "removed so_long"
 
 re : fclean all
