@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 00:20:19 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/26 23:58:46 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:00:22 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void map_border(t_vars *var)
 	x = 0;
 	y = 0;
 	var->width = (int)ft_strlen(var->map[x]);
+	if (var->map[var->hight - 1][var->width + 1] == '\0')
+		clear_vars(var, 1);
 	while(var->map[x])
 	{
 		if((int)ft_strlen(var->map[x]) != var->width)
@@ -32,7 +34,7 @@ void map_border(t_vars *var)
 	}
 	while(var->width > y)
 	{
-		if(var->map[0][y] != '1' 
+		if(var->map[0][y] != '1'
 			|| var->map[var->hight - 1][y] != '1')
 			clear_vars(var, 1);
 		y++;

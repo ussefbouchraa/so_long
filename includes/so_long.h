@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:05:16 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/29 06:58:46 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:03:57 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,21 @@
 # endif
 
 //part 1
+typedef struct s_img
+{
+	void	*hero;
+	void	*wall;
+	void	*coin;
+	void	*door;
+	void	*road;
+} t_img;
+
 typedef struct s_vars
 {
+	t_img	img;
 	void	*mlx;
 	void	*win;
-	int		score;
+	int		moves;
 	int		fd;
 	int		x;
 	int		y;
@@ -53,15 +63,17 @@ char	*get_next_line(int fd);
 void	ft_puterror(char *s);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
+void    ft_putstr(char *s);
+void    put_moves(int moves);
 
 //part two
 void	map_border(t_vars *var);
 void    valid_path(t_vars *var);
-void    play_game(t_vars *var);
 void 	move_player(t_vars *var, int key);
-int 	search_of_player(t_vars *var);
 void	clear_vars(t_vars *var, int msg);
-void	print_map(char **map);
 void	free_map(char **map);
 
+//part three
+void    play_game(t_vars *var);
+void    display_map(t_vars *var);
 #endif

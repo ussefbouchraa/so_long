@@ -6,13 +6,13 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 02:28:05 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/29 06:59:57 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:03:18 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int fill_map(char **map, int x, int y)
+int	fill_map(char **map, int x, int y)
 {
 	int	ret;
 
@@ -42,7 +42,7 @@ int fill_map(char **map, int x, int y)
 
 void	check_element(t_vars *var)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (var->map2[x])
@@ -57,24 +57,23 @@ void	check_element(t_vars *var)
 }
 void    dup_map(t_vars *var)
 {
-    int x;
+	int x;
 
-    x = -1;
-    var->map2 = malloc(sizeof(char *) * var->hight + 1);
-    if (!var->map2)
-        clear_vars(var, 1);
-    while (var->map[++x])
-        var->map2[x] = ft_strdup(var->map[x]);
-    var->map2[x] = NULL;
+	x = -1;
+	var->map2 = malloc(sizeof(char *) * var->hight + 1);
+	if (!var->map2)
+		clear_vars(var, 1);
+	while (var->map[++x])
+		var->map2[x] = ft_strdup(var->map[x]);
+	var->map2[x] = NULL;
 }
 void    valid_path(t_vars *var)
 {
-	dup_map(var);
-	
 	int	x;
 	int	y;
 	
 	x = 0;
+	dup_map(var);
 	while(var->map2[x])
 	{
 		y = 0;

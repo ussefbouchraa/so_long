@@ -6,51 +6,47 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:06:10 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/03/29 07:05:53 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:00:18 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void print_map(char **map)
+void map_chars(t_vars *var)
 {
-	while (*map)
-		printf("%s\n", *map++);
-}
-void	map_chars(t_vars *var)
-{
-	int	x;
-	int	y;
+	int x;
+	int y;
 
 	x = -1;
-	while(var->map[++x])
+	while (var->map[++x])
 	{
 		y = -1;
-		while(var->map[x][++y])
-			{
-				if(var->map[x][y] == 'P')
-					var->p++;
-				else if(var->map[x][y] == 'C')
-					var->c++;
-				else if(var->map[x][y] == 'E')
-					var->e++;
-				else if(var->map[x][y] != '1' && var->map[x][y] != '0')
-					clear_vars(var, 1);
-			}
+		while (var->map[x][++y])
+		{
+			if (var->map[x][y] == 'P')
+				var->p++;
+			else if (var->map[x][y] == 'C')
+				var->c++;
+			else if (var->map[x][y] == 'E')
+				var->e++;
+			else if (var->map[x][y] != '1' && var->map[x][y] != '0')
+				clear_vars(var, 1);
 		}
-
+	}
 	if (var->c == 0 || var->e != 1 || var->p != 1)
 		clear_vars(var, 1);
 }
+
+
 void	init_vars(t_vars *var)
 {
-	var->score = 0;
 	var->fd = 0;
 	var->x = 0;
 	var->y = 0;
 	var->p = 0;
 	var->c = 0;
 	var->e = 0;
+	var->moves = 0;
 	var->width = 0;
 	var->hight = 0;
 	var->map = NULL;
@@ -71,7 +67,6 @@ void	check_map(char *av, t_vars *var)
 	while (j < var->hight)
 		var->map[j++] = get_next_line(var->fd);
 	var->map[j] = NULL;
-	
 	close(var->fd);
 	map_border(var);
 	map_chars(var);
@@ -85,14 +80,15 @@ void    check_extention(char *av)
 		ft_puterror("Error : Wrong extention\n");
 }
 
-void lek() { system("leaks so_long");}
-
-int main(int ac, char **av)
+void	hhhh()
 {
+	system("leaks so_long");
+}
+int main(int ac, char **av)
+{	
 	t_vars	var;
 
-	atexit(lek);
-
+	atexit(hhhh);
 	init_vars(&var);
 	if(ac == 2)
 	{
